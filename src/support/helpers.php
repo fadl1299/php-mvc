@@ -39,6 +39,31 @@ if (! function_exists('base_path')) {
     
     }
 
+    if (!function_exists('config')) {
+        function config($key = null, $default = null)
+        {
+            if (is_null($key)) {
+                // return app()->config;
+                return 'App Config Null';
+            }
+    
+            if (is_array($key)) {
+                // return app()->config->set($key);
+                return 'App Config Array';
+            }
+    
+            // return app()->config->get($key, $default);
+        }
+    }
+
+    if (! function_exists('config_path')) {
+        
+        function config_path() {
+
+            return base_path() . ''; 
+        }
+    }
+
 
     if (! function_exists('view_path')) {
     

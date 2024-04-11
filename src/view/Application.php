@@ -43,9 +43,13 @@ class Application
     protected function loadConfigurations()
     {
         foreach(scandir(config_path()) as $file) {
+
             if ($file == '.' || $file == '..') {
+
                 continue;
+
             }
+
             $filename = explode('.', $file)[0];
 
             yield $filename => require config_path() . $file;
