@@ -14,12 +14,14 @@ class Validator
 
     protected ErrorBag $errorBag;
 
+
     public function make($data)
     {
         $this->data = $data;
         $this->errorBag = new ErrorBag();
         $this->validate();
     }
+
 
     protected function validate()
     {
@@ -33,6 +35,7 @@ class Validator
         }
     }
 
+
     protected function applyRule($field, Rule $rule)
     {
         if (!$rule->apply($field, $this->getFieldValue($field), $this->data)) {
@@ -40,34 +43,42 @@ class Validator
         }
     }
 
+
     protected function getFieldValue($field)
     {
         return $this->data[$field] ?? null;
     }
+
 
     public function setRules($rules)
     {
         $this->rules = $rules;
     }
 
+
     public function passes()
     {
         return empty($this->errors());
     }
+
 
     public function errors($key = null)
     {
         return $key ? $this->errorBag->errors[$key] : $this->errorBag->errors;
     }
 
+
     public function alias($field)
     {
         return $this->aliases[$field] ?? $field;
     }
+
 
     public function setAliases(array $aliases)
     {
         $this->aliases = $aliases;
     }
 }
+
+
 ?>

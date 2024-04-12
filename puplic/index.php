@@ -3,6 +3,7 @@
 session_start();
 use Dotenv\Dotenv;
 use SecTheater\support\Arr;
+use SecTheater\Support\Str;
 
 require_once __DIR__ . '/../src/Support/helpers.php';
 require_once base_path() . 'vendor/autoload.php';
@@ -10,9 +11,10 @@ require_once base_path() . 'routes/web.php';
 
 // $env = Dotenv::createImmutable(base_path());
 
-// $env->load();
+$env->load();
 
-// app()->run();
+app()->run();
 
-// var_dump();
+
+
 ?>

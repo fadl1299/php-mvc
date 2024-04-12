@@ -69,3 +69,5 @@ class Session
         $_SESSION[self::FLASH_KEY] = $flashMessages;
     }
 }
+
+?>

@@ -35,8 +35,8 @@ class Application
     {
         return match(env('DB_DRIVER')) {
             'sqlite' => new SQLiteManager,
-            'mysql' => new MySQLManager,
-            default => new SQLiteManager
+            'mysql'  => new MySQLManager,
+            default  => new SQLiteManager
         };
     }
 

@@ -1,20 +1,36 @@
 <?php
 
-namespace Sectheater\http;
+namespace SecTheater\Http;
 
-class request {
+use SecTheater\Support\Arr;
+use SecTheater\Support\Str;
 
-    public function getmethod() {
-
-        return $_SERVER['REQUEST_METHOD'];
+class Request
+{
+    public function path()
+    {
+        $path = $_SERVER['REQUEST_URI'] ?? '/';
+        return str_contains($path, '?') ? explode('?', $path)[0] : $path;
     }
 
-    public function path() {
+    public function method()
+    {
+        return Str::lower($_SERVER['REQUEST_METHOD']);
+    }
 
-        $path = $_SERVER['REQUEST_URL'] ?? '/';
+    public function all()
+    {
+        return $_REQUEST;
+    }
 
-        return str_contains($path, "?") ? explode("?", $path)[0] :$path ;
+    public function only($keys)
+    {
+        return Arr::only($this->all(), $keys);
+    }
+
+    public function get($key)
+    {
+        return Arr::get($this->all(), $key);
     }
 }
-
 ?>
